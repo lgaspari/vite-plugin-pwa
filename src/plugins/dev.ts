@@ -128,7 +128,7 @@ export function DevPlugin(ctx: PWAPluginContext) {
             mkdirSync(globDirectory, { recursive: true })
 
           const swDest = resolve(globDirectory, 'sw.js')
-          if (!swDevOptions.swDevGenerated || !existsSync(swDest)) {
+          if (!swDevOptions.swDevGenerated || !existsSync(swDest) || options.selfDestroying) {
             // add empty js file to suppress workbox-build warnings
             let suppressWarnings: string | undefined
             if (options.devOptions.suppressWarnings === true) {
